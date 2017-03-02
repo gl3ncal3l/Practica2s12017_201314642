@@ -1,4 +1,6 @@
 import Estructuras.NodoLista
+import os
+from graphviz import Digraph
 nodo = Estructuras.NodoLista
 
 
@@ -53,15 +55,22 @@ class ListaSimple(object):
         if indice >=0 and indice<self.tamanio:
             if indice ==0:
                 self.primero = self.primero.siguiente
+            elif indice == self.obtenerTamanio()-1:
+                actual = self.primero
+                while actual.siguiente!=self.ultimo:
+                    actual = actual.siguiente
+                aux = actual.siguiente
+                actual.siguiente = None
+                self.ultimo = actual
             else:
                 aux = self.primero
                 contador = 0
                 while contador<indice-1:
                     aux = aux.siguiente
                     contador+=1
-                siguientenodo = aux.siguiente
-                aux.siguiente = siguientenodo.siguiente
-                self.ultimo = aux
+                siguienteNodo = aux.siguiente
+                aux.siguiente = siguienteNodo.siguiente
+                aux = None
         self.tamanio -=1
 
 
@@ -87,3 +96,30 @@ class ListaSimple(object):
                     validar = False
                 else:
                     temp = temp.siguiente
+
+    def graficarLista(self):
+        aux = self.primero
+        aux2 = self.primero.siguiente
+        file_path = "Graficas"
+        try:
+            if not os.path.exists(file_path):
+                os.makedirs(file_path)
+                print("se ha creado el directorio")
+            archivo = open("Graficas/lista.dot","w")
+            archivo.write("digraph Lista{\n")
+            archivo.write("\t node[shape=record];\n")
+            archivo.write("\t subgraph clusterStack {\n")
+            archivo.write("\t label = \"Lista Simple Enlazada \";\n")
+            archivo.write("\t fontsize = 16;\n")
+            while aux!=None and aux2!=None:
+                archivo.write("\t"+aux.getPalabra()+"->"+aux2.getPalabra()+"\n")
+                aux = aux.siguiente
+                aux2 = aux2.siguiente
+            archivo.write("\t}\n")
+            archivo.write("}")
+            archivo.close()
+            cmd = '"C:\\Program Files (x86)\\Graphviz 2.28\\bin\\dot.exe" -Tjpg Graficas\\lista.dot -o Graficas\\lista.jpg'
+            os.system(cmd)
+
+        except ValueError:
+            print("Error!")

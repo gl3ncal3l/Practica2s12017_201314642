@@ -1,4 +1,5 @@
 import Estructuras.NodoCola
+import os
 nodo = Estructuras.NodoCola
 
 class Cola(object):
@@ -37,3 +38,30 @@ class Cola(object):
         while aux != None:
             print(aux.getNumero())
             aux = aux.siguiente
+
+    def graficarCola(self):
+        aux = self.primero
+        aux2 = self.primero.siguiente
+        file_path = "Graficas"
+        try:
+            if not os.path.exists(file_path):
+                os.makedirs(file_path)
+                print("se ha creado el directorio")
+            archivo = open("Graficas/cola.dot", "w")
+            archivo.write("digraph Lista{\n")
+            archivo.write("\t node[shape=record];\n")
+            archivo.write("\t subgraph clusterQueue {\n")
+            archivo.write("\t label = \"Cola \";\n")
+            archivo.write("\t fontsize = 16;\n")
+            while aux != None and aux2 != None:
+                archivo.write("\t" + str(aux.getNumero()) + "->" + str(aux2.getNumero()) + "\n")
+                aux = aux.siguiente
+                aux2 = aux2.siguiente
+            archivo.write("\t}\n")
+            archivo.write("}")
+            archivo.close()
+            cmd = '"C:\\Program Files (x86)\\Graphviz 2.28\\bin\\dot.exe" -Tjpg Graficas\\cola.dot -o Graficas\\cola.jpg'
+            os.system(cmd)
+
+        except ValueError:
+            print("Error!")

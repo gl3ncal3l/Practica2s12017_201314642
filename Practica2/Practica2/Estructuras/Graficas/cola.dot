@@ -1,0 +1,12 @@
+digraph Lista{
+	 node[shape=record];
+	 subgraph clusterQueue {
+	 label = "Cola ";
+	 fontsize = 16;
+	2->19
+	19->39
+	39->45
+	45->12
+	12->18
+	}
+}

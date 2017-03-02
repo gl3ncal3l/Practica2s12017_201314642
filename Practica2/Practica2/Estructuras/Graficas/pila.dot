@@ -1,0 +1,12 @@
+digraph Lista{
+	 node[shape=record];
+	 subgraph clusterStack {
+	 label = "Pila ";
+	 fontsize = 16;
+	9->8
+	8->19
+	19->6
+	6->5
+	5->2
+	}
+}
