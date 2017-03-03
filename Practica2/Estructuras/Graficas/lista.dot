@@ -1,0 +1,9 @@
+digraph Lista{
+	 node[shape=record];
+	 subgraph clusterStack {
+	 label = "Lista Simple Enlazada ";
+	 fontsize = 16;
+	c->b
+	b->a
+	}
+}
