@@ -1,7 +1,6 @@
-import Estructuras.NodoLista
+import NodoLista
 import os
-from graphviz import Digraph
-nodo = Estructuras.NodoLista
+nodo = NodoLista
 
 
 class ListaSimple(object):
@@ -43,11 +42,11 @@ class ListaSimple(object):
             aux = self.primero
             contador = 0
             while valor != aux.getPalabra():
-                contador = contador +1
+                contador = contador+1
                 aux = aux.siguiente
-            return contador
+            return "EL DATO SE ENCUENTRA EN EL INDICE: "+str(contador)
         else:
-            print("NO SE ENCONTRÓ EL DATO")
+            return "NO SE ENCONTRÓ EL DATO"
 
 
 
@@ -72,7 +71,6 @@ class ListaSimple(object):
                 aux.siguiente = siguienteNodo.siguiente
                 aux = None
         self.tamanio -=1
-
 
     def insertarFinal(self,palabra):
         nuevo = nodo.NodoLista(palabra)
@@ -119,7 +117,9 @@ class ListaSimple(object):
             archivo.write("}")
             archivo.close()
             cmd = '"C:\\Program Files (x86)\\Graphviz 2.28\\bin\\dot.exe" -Tjpg Graficas\\lista.dot -o Graficas\\lista.jpg'
+            #a2 = 'C:\\Users\\Glen\\Desktop\\EDD LAB\\Practica2\\Practica2\\Estructuras\\Graficas\\lista.jpg'
             os.system(cmd)
+			#os.system(a2)
 
         except ValueError:
             print("Error!")

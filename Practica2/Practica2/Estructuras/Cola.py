@@ -1,6 +1,6 @@
-import Estructuras.NodoCola
+import NodoCola
 import os
-nodo = Estructuras.NodoCola
+nodo = NodoCola
 
 class Cola(object):
     def __init__(self):
@@ -61,7 +61,9 @@ class Cola(object):
             archivo.write("}")
             archivo.close()
             cmd = '"C:\\Program Files (x86)\\Graphviz 2.28\\bin\\dot.exe" -Tjpg Graficas\\cola.dot -o Graficas\\cola.jpg'
+            #a2 = '"C:\\Users\\Glen\\Desktop\\EDD LAB\\Practica2\\Practica2\\Estructuras\\Graficas\\cola.jpg"'
             os.system(cmd)
+			#os.system(a2)
 
         except ValueError:
             print("Error!")

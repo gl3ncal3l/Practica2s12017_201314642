@@ -1,6 +1,6 @@
-import Estructuras.NodoPila
+import NodoPila
 import os
-nodo = Estructuras.NodoPila
+nodo = NodoPila
 
 class Pila(object):
     def __init__(self):
@@ -53,7 +53,9 @@ class Pila(object):
             archivo.write("}")
             archivo.close()
             cmd = '"C:\\Program Files (x86)\\Graphviz 2.28\\bin\\dot.exe" -Tjpg Graficas\\pila.dot -o Graficas\\pila.jpg'
+            #cmd2 = '"C:\\Users\\Glen\\Desktop\\EDD LAB\\Practica2\\Practica2\\Estructuras\\Graficas\\pila.jpg"'
             os.system(cmd)
+			#os.system(cmd2)
 
         except ValueError:
             print("Error!")

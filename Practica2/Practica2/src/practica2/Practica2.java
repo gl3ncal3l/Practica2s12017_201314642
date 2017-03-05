@@ -3,13 +3,16 @@ import interfaz.*;
 
 public class Practica2 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // TODO code application logic here
         MenuPrincipal menu = new MenuPrincipal();
+        menu.setTitle("Practica No.2");
         menu.setVisible(true);
+        menu.setLocationRelativeTo(null);
+                
     }
+    
+    
+
     
 }
